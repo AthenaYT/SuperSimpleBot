@@ -6,3 +6,6 @@ node_modules
 
 # data
 .data
+
+# nodes
+nodes/backup.json
