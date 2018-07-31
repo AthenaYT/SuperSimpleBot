@@ -1,4 +1,4 @@
-# config
+# configs
 config.json
 
 # packages
@@ -10,6 +10,7 @@ node_modules
 # nodes
 nodes/backup.json
 nodes/backup-2.json
+nodes/lag-free.json
 
 # utils
 util/Logs.js
