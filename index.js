@@ -7,6 +7,9 @@ const enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
 require('./package.json');
 
+const Webhook = require("webhook-discord")
+ 
+
 client.on('ready', () => {
   client.user.setActivity(`with mommy and daddy`)
   console.log('Logged In As ' + client.user.tag)
@@ -97,7 +100,6 @@ const { RichEmbed } = require('discord.js')
     const dispatcher = connection.playFile('./audio.mp3');
   })
   .catch(console.error);
- 
   }
   
 });
@@ -106,14 +108,3 @@ const { RichEmbed } = require('discord.js')
 client.login(config.token)
 
 
-const http = require('http');
-const express = require('express');
-const app = express();
-app.get("/", (request, response) => {
-  console.log(Date.now() + " Ping Received");
-  response.sendStatus(200);
-});
-app.listen(process.env.PORT);
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
