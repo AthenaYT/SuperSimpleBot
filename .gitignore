@@ -14,3 +14,7 @@ nodes/lag-free.json
 
 # utils
 util/Logs.js
+
+# misc
+.glitch-assets
+shrinkwrap.yaml
