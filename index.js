@@ -7,13 +7,28 @@ const enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
 require('./package.json');
 
-const Webhook = require("webhook-discord")
- 
+const Webhook = require('webhook-discord')
+const Hook = new Webhook(process.env.W)
+
+client.on("guildMemberAdd", (member) => {
+  console.log(`New User "${member.user.username}" has joined "${member.guild.name}"` );
+  member.guild.channels.get("welcome").send(`"${member.user.username}" has joined this server`);
+});
 
 client.on('ready', () => {
   client.user.setActivity(`with mommy and daddy`)
   console.log('Logged In As ' + client.user.tag)
+  Hook.info('Shard Updates', `Shard ${client.shard.id} Is Connecting...`)
 });
+
+client.on('reconnecting', () => {
+  Hook.info('Shard Updates', `Shard ${client.shard.id} Is Reconnecting...`)
+});
+
+client.on('disconnect', () => {
+  Hook.info('Shard Updates', `Shard ${client.shard.id} Has Disconnected...`)
+});
+
 
 client.on('message', async message => {
   const duration = moment.duration(client.uptime).format(" D [Days], H [Hours], m [Minutes], s [Seconds]");
